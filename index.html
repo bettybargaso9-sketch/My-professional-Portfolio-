@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Betty S. Bargaso | Creative IT Portfolio</title>
+    
+    <!-- External Favicon & Fonts -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/921/921347.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ===== BASE STYLING ===== */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        body {
+            font-family: "Poppins", sans-serif;
+            color: #f9f9f9;
+            background: linear-gradient(135deg, #000000, #0f001a, #15002b, #000000);
+            background-size: 300% 300%;
+            animation: gradientBG 12s ease infinite;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 200% 50%; }
+            200% { background-position: 0% 50%; }
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #9B0CCE;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        nav a:hover { 
+            color: #00eaff; 
+            text-shadow: 0 0 8px rgba(0, 234, 255, 0.6);
+            background: rgba(155, 12, 206, 0.2);
+        }
+
+        /* ===== SECTION WRAPPERS ===== */
+        section {
+            padding: 110px 20px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        h1 { 
+            margin-bottom: 30px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            color: #fff;
+            font-size: 2rem;
+            text-shadow: 0 0 10px rgba(155, 12, 206, 0.5);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 35px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(5px);
+        }
+
+        /* ===== HOME SECTION ===== */
+        .profile-frame {
+            width: 300px;
+            height:300px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, #9B0CCE, #00eaff);
+            box-shadow: 0 0 25px rgba(155, 12, 206, 0.5);
+            transition: transform 0.4s ease;
+        }
+
+        .profile-frame:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height:100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #000;
+        }
+
+        /* ===== GRID LAYOUTS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: rgba(10, 5, 20, 0.7);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover { 
+            transform: translateY(-8px); 
+            border-color: #9B0CCE; 
+            box-shadow: 0 10px 25px rgba(155, 12, 206, 0.3);
+        }
+
+        .card img, .card iframe {
+            width: 100%;
+            height:250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: none;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            color: #cccccc;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* ===== SKILL ICONS ===== */
+        .skill-icon {
+            width: 80px !important;
+            height: 80px !important;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #9B0CCE;
+            padding: 3px;
+            background: #111;
+        }
+
+        /* ===== RESUME SPECIFIC STYLING ===== */
+        .resume-container {
+            margin-top: 20px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .resume-full-img {
+            max-width 400%;
+            max-width:400px;
+            height: auto;
+            border-radius: 5px;
+            border: 2px solid rgba(155, 12, 206, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .resume-full-img:hover {
+            border-color: #00eaff;
+            box-shadow: 0 0 100px rgba(0, 234, 255, 0.4);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-visit {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #9B0CCE;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(155, 12, 206, 0.4);
+        }
+
+        .btn-visit:hover { 
+            background: #00eaff; 
+            color: #000; 
+            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.5);
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        input, textarea {
+            width: 100%;
+            max-width: 450px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: rgba(17, 17, 17, 0.9);
+            color: #fff;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #00eaff;
+            box-shadow: 0 0 8px rgba(0, 234, 255, 0.3);
+        }
+
+        button[type="submit"] {
+            padding: 12px 40px;
+            border-radius: 30px;
+            background: #9B0CCE;
+            color: white;
+            border: none;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(155, 12, 206, 0.4);
+        }
+
+        button[type="submit"]:hover { 
+            background: #fff; 
+            color: #9B0CCE; 
+            transform: scale(1.05);
+        }
+
+        /* ===== CHATBOT STYLING ===== */
+        .chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #9B0CCE;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(155, 12, 206, 0.6);
+            z-index: 2000;
+            transition: all 0.3s ease;
+        }
+
+        .chat-btn:hover { 
+            transform: scale(1.1); 
+            background: #00eaff; 
+            color: #000; 
+            box-shadow: 0 4px 20px rgba(0, 234, 255, 0.8);
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 320px;
+            max-width: calc(100vw - 40px);
+            background: #111;
+            border: 1px solid #9B0CCE;
+            border-radius: 15px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .chat-header {
+            background: #9B0CCE;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .chat-body {
+            height: 280px;
+            padding: 15px;
+            overflow-y: auto;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .chat-msg {
+            background: rgba(155, 12, 206, 0.25);
+            border: 1px solid rgba(155, 12, 206, 0.4);
+            padding: 8px 12px;
+            border-radius: 10px;
+            align-self: flex-start;
+            max-width: 85%;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+
+        .chat-msg.user {
+            align-self: flex-end;
+            background: #9B0CCE;
+            color: white;
+            border: none;
+        }
+
+        .chat-footer {
+            padding: 10px;
+            border-top: 1px solid #333;
+            display: flex;
+            gap: 5px;
+            background: #151515;
+        }
+
+        .chat-footer input {
+            margin-bottom: 0;
+            padding: 8px 12px;
+            font-size: 12px;
+            border-radius: 20px;
+        }
+
+        .chat-footer button {
+            padding: 6px 15px;
+            font-size: 12px;
+            border-radius: 20px;
+            background: #9B0CCE;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .chat-footer button:hover {
+            background: #00eaff;
+            color: #000;
+        }
+
+        footer { 
+            padding: 40px; 
+            color: #888; 
+            font-size: 13px; 
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        @media (max-width: 600px) {
+            nav a {
+                font-size: 11px;
+                margin: 0 4px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .profile-frame {
+                width: 150px;
+                height: 150px;
+            }
+            section {
+                padding: 90px 15px 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#tutorials">Tutorials</a>
+    <a href="#skills">Skills</a>
+    <a href="#output">Output</a>
+    <a href="#accomplishments">Accomplishments</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+    <div class="glass-card">
+        <div class="profile-frame">
+            <img src="/h/20260921_204942.jpg" 
+                 alt="Betty Bargaso"/>
+        </div>
+        <h1>Betty Salibio Bargaso</h1>
+        <p style="color: #00eaff; font-weight: 600; font-size: 1.1rem; letter-spacing: 1px;">IT Student & Creative Designer</p>
+        <p style="margin-top: 15px; font-size: 14px; line-height: 1.7; max-width: 800px; margin-left: auto; margin-right: auto; color: #ddd;">
+            I'm Betty Salibio Bargaso, a passionate graduate of Bachelor of Science in Information Technology. 
+            I believe that technology can shape the future beautifully. I create, design, and develop with purpose, 
+            combining innovation, artistry, and technology to make meaningful digital experiences.
+        </p>
+    </div>
+</section>
+
+<section id="projects">
+    <h1>My Projects</h1>
+    <div class="grid">
+        <div class="card">
+            <img src="/w/20260906_204554.jpg" 
+                 onerror="this.src='https://placehold.co/500x300/1a002c/ffffff?text=T-Shirt+Layout'" 
+                 alt="T-Shirt Design">
+            <h3>T-Shirt Layout</h3>
+            <p>Your style, professionally edited and crafted for printing.</p>
+        </div>
+        <div class="card">
+            <img src="/u/20260825_094351.jpg" 
+                 onerror="this.src='https://placehold.co/500x300/1a002c/ffffff?text=Figma+Shopping'" 
+                 alt="Figma">
+            <h3>My Figma Shopping</h3>
+            <p>Designed to make online shopping easy and enjoyable.</p>
+        </div>
+        <div class="card">
+            <img src="/o/20260906_204657.jpg" 
+                 onerror="this.src='https://placehold.co/500x300/1a002c/ffffff?text=Milktea+Branding'" 
+                 alt="Milktea Branding">
+            <h3>Milktea Branding</h3>
+            <p>Designed to Be Seen, Made to Be Sipped.</p>
+        </div>
+        <div class="card">
+            <img src="/w/Screenshot_20260824-225829_Gallery.jpg" 
+                 onerror="this.src='https://placehold.co/500x300/1a002c/ffffff?text=Motherboard+Arch'" 
+                 alt="Motherboard">
+            <h3>Motherboard</h3>
+            <p>Powering essential computer components and architecture.</p>
+        </div>
+        <div class="card">
+            <img src="/c/20260825_094410.jpg"
+                 onerror="this.src='https://placehold.co/500x300/1a002c/ffffff?text=Web+Systems'" 
+                 alt="my system">
+            <h3>My Systems</h3>
+            <p>Developing responsive and modern web interfaces.</p>
+        </div>
+        <div class="card">
+            <img src="/v/Screenshot_20260824-230553_Spck Editor.jpg" 
+                 onerror="this.src='https://placehold.co/500x300/1a002c/ffffff?text=Source+Code'" 
+                 alt="my code">
+            <h3>My Code</h3>
+            <p>Clean code, clear mind, perfect design implementation.</p>
+        </div>
+    </div>
+</section>
+
+<section id="tutorials">
+    <h1 style="color: #00eaff;">🎓 Tutorials</h1>
+    <div class="grid">
+        <div class="card">
+            <iframe src="https://www.youtube.com/embed/b966PvjASag" title="How to Create Banner" allowfullscreen></iframe>
+            <h3>How to Create Banner</h3>
+            <p>A guide to interactive app layouts and modern banner creation.</p>
+        </div>
+        <div class="card">
+            <iframe src="https://www.youtube.com/embed/OM4GOV4JJLA" title="How to Create Music Video" allowfullscreen></iframe>
+            <h3>How to Create Music Video</h3>
+            <p>Explore creative timeline tricks and workflows in Adobe Premiere.</p>
+        </div>
+        <div class="card">
+            <iframe src="https://www.youtube.com/embed/FTFaQWZBqQ8" title="How to Create Figma Portfolio" allowfullscreen></iframe>
+            <h3>How to Create Figma Portfolio</h3>
+            <p>More creative design tips for prototyping a Figma Portfolio.</p>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <h1>My Skills</h1>
+    <div class="grid">
+        <div class="card">
+            <img src="/b/Screenshot_20260824-222418_Gallery.jpg" class="skill-icon" alt="Adobe Photoshop">
+            <h3>Adobe Photoshop</h3>
+            <p>Expert photo manipulation, raster editing, and layout design.</p>
+        </div>
+        <div class="card">
+            <img src="/f/Screensho"t_20260824-222648_Gallery.jpg" class="skill-icon" alt="Adobe Premiere">
+            <h3>Adobe Premiere</h3>
+            <p>Professional video editing, motion color, and storytelling.</p>
+        </div>
+        <div class="card">
+            <img src="/n/Html_20260417-074610_Gallery.jpg"" class="skill-icon" alt="HTML">
+            <h3>HTML Editing</h3>
+            <p>Semantic web structuring; where digital ideas begin.</p>
+        </div>
+        <div class="card">
+            <img src="/f/Screenshot_20260824-225922_Gallery.jpg" class="skill-icon" alt="Volleyball">
+            <h3>Volleyball</h3>
+            <p>Team coordination, communication, and athletic agility.</p>
+        </div>
+        <div class="card">
+            <img src="/d/Screenshot_20260824-225859_Gallery.jpg==" class="skill-icon" alt="Basketball">
+            <h3>Basketball</h3>
+            <p>Strategic playing, quick execution, and sportsmanship.</p>
+        </div>
+    </div>
+</section>
+
+<section id="output">
+    <h1 style="color: #9B0CCE;">My Simple Output</h1>
+    <div class="grid">
+        <div class="card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" class="skill-icon" alt="Figma">
+            <h3>Figma Portfolio</h3>
+            <p>View my interactive UI/UX prototypes and mobile interface concepts.</p>
+            <a href="https://www.figma.com" target="_blank" class="btn-visit">Visit Here</a>
+        </div>
+        <div class="card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968746.png" class="skill-icon" alt="Canva">
+            <h3>Canva Designs</h3>
+            <p>Creative social media layouts, marketing flyers, and graphic outputs.</p>
+            <a href="https://www.canva.com" target="_blank" class="btn-visit">Visit Here</a>
+        </div>
+    </div>
+</section>
+
+<section id="accomplishments">
+    <h1 style="color: #9B0CCE;">Accomplishments</h1>
+    <div class="grid">
+        <div class="card">
+            <img src="/s/Screenshot_20260824-222430_Gallery.jpg" 
+                 onerror="this.src='https://placehold.co/500x300/1a002c/ffffff?text=IT+Certification'" 
+                 alt="Accomplishments">
+            <h3>IT Certification</h3>
+            <p>Completed professional training in specialized IT hardware and web modules.</p>
+        </div>
+        <div class="card">
+            <img src="/r/Screenshot_20260824-222436_Gallery.jpg" 
+                 onerror="this.src='https://placehold.co/500x300/1a002c/ffffff?text=Design+Recognition'" 
+                 alt="Design Recognition">
+            <h3>Design Recognition</h3>
+            <p>Awarded for excellence in digital layout, graphic composition, and creative vision.</p>
+        </div>
+        <div class="card">
+            <img src="/b/20260825_094203.jpg" 
+                 onerror="this.src='https://placehold.co/500x300/1a002c/ffffff?text=Academic+Milestone'" 
+                 alt="Academic Milestone">
+            <h3>Academic Milestone</h3>
+            <p>Successfully presented major IT capstone projects and software system architecture.</p>
+        </div>
+    </div>
+</section>
+
+<section id="resume">
+    <h1>My Resume</h1>
+    <div class="glass-card">
+        <div class="resume-container">
+            <img src="/m/Messenger_creation_5ED68F83-BAEF-4F7C-8DAD-B34D2631A205.jpeg" 
+                 onerror="this.src='https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&auto=format&fit=crop&q=80';" 
+                 class="resume-full-img" 
+                 alt="Betty Bargaso Resume Preview">
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="glass-card">
+        <h1>Contact Me</h1>
+        <form class="contact-form" action="mailto:bettybargaso9@gmail.com" method="post" enctype="text/plain">
+            <input type="text" placeholder="Name" required><br>
+            <input type="email" placeholder="Email" required><br>
+            <textarea placeholder="Your Message" rows="5" required></textarea><br>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- Chatbot Button & Window -->
+<div class="chat-btn" onclick="toggleChat()">
+    <i class="fas fa-comment-dots"></i>
+</div>
+
+<div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+        <span><i class="fas fa-robot" style="margin-right: 6px;"></i> Betty's Assistant</span>
+        <i class="fas fa-times" style="cursor:pointer" onclick="toggleChat()"></i>
+    </div>
+    <div class="chat-body" id="chatBody">
+        <div class="chat-msg">Hello! I'm Betty's virtual assistant. How can I help you today?</div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="chatInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    function toggleChat() {
+        const chat = document.getElementById('chatWindow');
+        chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const body = document.getElementById('chatBody');
+        
+        if (input.value.trim() !== "") {
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg user';
+            userMsg.innerText = input.value;
+            body.appendChild(userMsg);
+
+            const userText = input.value.toLowerCase();
+            input.value = "";
+            body.scrollTop = body.scrollHeight;
+
+            // Simple Auto-Response Logic
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-msg';
+                
+                if (userText.includes("project") || userText.includes("work")) {
+                    botMsg.innerText = "Betty has worked on various projects including Figma prototypes, Milktea Branding, and Web Systems. Check out the Projects section!";
+                } else if (userText.includes("skill") || userText.includes("photoshop") || userText.includes("premiere")) {
+                    botMsg.innerText = "Betty is skilled in Adobe Photoshop, Adobe Premiere, HTML editing, as well as sports like Volleyball and Basketball!";
+                } else if (userText.includes("contact") || userText.includes("email") || userText.includes("hire")) {
+                    botMsg.innerText = "You can email Betty directly at bettybargaso9@gmail.com or use the contact form at the bottom of the page.";
+                } else {
+                    botMsg.innerText = "Thanks for reaching out! Betty will get back to you soon. Feel free to use the contact form below as well!";
+                }
+                
+                body.appendChild(botMsg);
+                body.scrollTop = body.scrollHeight;
+            }, 800);
+        }
+    }
+
+    // Allow "Enter" key to send message
+    document.getElementById('chatInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') sendMessage();
+    });
+</script>
+
+<footer>
+    <p>Betty Salibio Bargaso | © 2026 Designed with 💜 Passion & Code</p>
+</footer>
+
+</body>
+</html>
